@@ -14,12 +14,29 @@ services:
       # OpenClaw 데이터 영속화
       - openclaw-data:/home/node/.openclaw
     env_file: .env
+    environment:
+      - BROWSER_WS_ENDPOINT=ws://browser:3000
+    depends_on:
+      - browser
     restart: unless-stopped
     # 리소스 제한 (미니PC용)
     deploy:
       resources:
         limits:
           memory: 2G
+
+  browser:
+    image: browserless/chrome:latest
+    container_name: nexus-browser
+    restart: unless-stopped
+    environment:
+      - MAX_CONCURRENT_SESSIONS=5
+      - CONNECTION_TIMEOUT=120000
+      - PREBOOT_CHROME=true
+    deploy:
+      resources:
+        limits:
+          memory: 1G
 
 volumes:
   openclaw-data:

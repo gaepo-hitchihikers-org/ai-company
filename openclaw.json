@@ -42,8 +42,7 @@
                 "id": "frontend",
                 "workspace": "./workspaces/frontend",
                 "model": {
-                    "primary": "anthropic/claude-opus-4-6",
-                    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+                    "primary": "google/gemini-3-flash"
                 },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit", "browser"]
