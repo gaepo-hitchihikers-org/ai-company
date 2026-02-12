@@ -235,6 +235,9 @@
 
     // ─── Gateway 설정 ───
     "gateway": {
-        "mode": "local"
+        "mode": "local",
+        "auth": {
+            "mode": "off"
+        }
     }
 }
