@@ -182,7 +182,7 @@
                 // collab-bridge
                 "C0AFJAGC280": {
                     "allow": true,
-                    "requireMention": true,
+                    "requireMention": false,
                     "allowBots": true
                 },
                 // pm-strategy
