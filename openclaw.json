@@ -37,26 +37,65 @@
                 }
             },
 
-            // ─── Dev_Agent: 개발자 ───
+            // ─── Frontend_Agent: 프론트엔드 개발자 ───
             {
-                "id": "dev",
-                "workspace": "./workspaces/dev",
+                "id": "frontend",
+                "workspace": "./workspaces/frontend",
                 "model": {
                     "primary": "anthropic/claude-opus-4-6",
                     "fallbacks": ["anthropic/claude-sonnet-4-5"]
                 },
                 "tools": {
-                    "allow": [
-                        "exec",
-                        "process",
-                        "read",
-                        "write",
-                        "edit",
-                        "browser"
-                    ]
+                    "allow": ["exec", "process", "read", "write", "edit", "browser"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@Dev", "@dev", "Dev_Agent"]
+                    "mentionPatterns": ["@Frontend", "@frontend", "Frontend_Agent"]
+                }
+            },
+
+            // ─── Backend_Agent: 백엔드 개발자 ───
+            {
+                "id": "backend",
+                "workspace": "./workspaces/backend",
+                "model": {
+                    "primary": "anthropic/claude-opus-4-6",
+                    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+                },
+                "tools": {
+                    "allow": ["exec", "process", "read", "write", "edit"]
+                },
+                "groupChat": {
+                    "mentionPatterns": ["@Backend", "@backend", "Backend_Agent"]
+                }
+            },
+
+            // ─── DevOps_Agent: 인프라 & 배포 ───
+            {
+                "id": "devops",
+                "workspace": "./workspaces/devops",
+                "model": {
+                    "primary": "anthropic/claude-sonnet-4-5"
+                },
+                "tools": {
+                    "allow": ["exec", "process", "read", "write", "edit"]
+                },
+                "groupChat": {
+                    "mentionPatterns": ["@DevOps", "@devops", "DevOps_Agent"]
+                }
+            },
+
+            // ─── Security_Agent: 보안 ───
+            {
+                "id": "security",
+                "workspace": "./workspaces/security",
+                "model": {
+                    "primary": "anthropic/claude-sonnet-4-5"
+                },
+                "tools": {
+                    "allow": ["exec", "process", "read", "write"]
+                },
+                "groupChat": {
+                    "mentionPatterns": ["@Security", "@security", "Security_Agent"]
                 }
             },
 
@@ -138,7 +177,7 @@
             }
         },
         {
-            "agentId": "dev",
+            "agentId": "frontend",
             "match": {
                 "channel": "slack",
                 "chatType": "channel",

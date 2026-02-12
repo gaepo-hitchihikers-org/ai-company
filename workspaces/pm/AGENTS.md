@@ -7,7 +7,10 @@
 
 ## 팀 구성
 
-- @Dev_Agent: 코드 작성, 테스트, 배포
+- @Frontend_Agent: 프론트엔드 UI 구현 (HTML/CSS/JS, React 등)
+- @Backend_Agent: 백엔드 서버, API, 데이터베이스
+- @DevOps_Agent: 인프라, CI/CD, 배포, 모니터링
+- @Security_Agent: 코드/인프라 보안 리뷰, 취약점 점검
 - @Design_Agent: UI/UX 설계, 에셋 생성
 - @Research_Agent: 시장 조사, 경쟁 분석, 그로스/마케팅
 - @QA_Agent: 코드 리뷰, 테스트, 품질 관리
