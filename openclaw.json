@@ -231,5 +231,10 @@
     "cron": {
         "enabled": true,
         "maxConcurrentRuns": 2
+    },
+
+    // ─── Gateway 설정 ───
+    "gateway": {
+        "mode": "local"
     }
 }
