@@ -12,7 +12,7 @@
             },
             "contextTokens": 50000,
             "models": {
-                "google-antigravity/claude-opus-4-5-thinking": { "alias": "Opus" },
+                "google-antigravity/claude-opus-4-6": { "alias": "Opus" },
                 "google-antigravity/claude-sonnet-4-5": { "alias": "Sonnet" },
                 "google-antigravity/gemini-3-pro-high": { "alias": "ProHigh" }
             },
@@ -28,7 +28,7 @@
                 "id": "pm",
                 "workspace": "./workspaces/pm",
                 "model": {
-                    "primary": "google-antigravity/claude-opus-4-5-thinking",
+                    "primary": "google-antigravity/claude-opus-4-6",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "groupChat": {
@@ -56,7 +56,7 @@
                 "id": "backend",
                 "workspace": "./workspaces/backend",
                 "model": {
-                    "primary": "google-antigravity/claude-opus-4-5-thinking",
+                    "primary": "google-antigravity/claude-opus-4-6",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "tools": {
