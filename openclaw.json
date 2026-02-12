@@ -25,6 +25,7 @@
             // ─── PM_Agent: 매니저 ───
             {
                 "id": "pm",
+                "default": true,
                 "workspace": "./workspaces/pm",
                 "model": {
                     "primary": "google-antigravity/claude-sonnet-4-5",
@@ -151,25 +152,39 @@
     // ⚠️ peer.id에 실제 Slack 채널 ID를 입력하세요 (C로 시작하는 문자열)
     // Slack에서 채널 우클릭 → "Copy link" → URL 끝의 C... 부분이 채널 ID
     "bindings": [
+        // #collab-bridge — PM이 받고, mentionPatterns로 에이전트별 라우팅
         {
             "agentId": "pm",
             "match": {
                 "channel": "slack",
-                // pm-strategy
+                "peer": { "kind": "channel", "id": "C0AFJAGC280" }
+            }
+        },
+        // #dev-log — 개발 관련 논의
+        {
+            "agentId": "pm",
+            "match": {
+                "channel": "slack",
+                "peer": { "kind": "channel", "id": "C0AETKYQP3N" }
+            }
+        },
+        // #pm-strategy — PM 전용
+        {
+            "agentId": "pm",
+            "match": {
+                "channel": "slack",
                 "peer": { "kind": "channel", "id": "C0AEHKR85S7" }
             }
         },
-
-
+        // #alert — 알림
         {
             "agentId": "pm",
             "match": {
                 "channel": "slack",
-                // alert
                 "peer": { "kind": "channel", "id": "C0AF2V9S0QH" }
             }
         },
-
+        // #design-review — Design 전용
         {
             "agentId": "design",
             "match": {
@@ -260,13 +275,6 @@
         }
     },
 
-    // ─── Broadcast: 다중 에이전트 공유 채널 ───
-    // @mention 기반으로 해당 에이전트가 응답. 멘션 없는 메시지는 default(pm)가 처리.
-    "broadcast": {
-        "strategy": "parallel",
-        // #collab-bridge — 전체 팀 (8명)
-        "channel:C0AFJAGC280": ["pm", "frontend", "backend", "devops", "security", "design", "research", "qa"],
-        // #dev-log — 개발팀 내부 (4명)
-        "channel:C0AETKYQP3N": ["frontend", "backend", "devops", "qa"]
-    }
+    // ─── 참고: broadcast는 Slack 미지원 (WhatsApp only) ───
+    // Slack에서는 PM 바인딩 + requireMention + mentionPatterns로 라우팅
 }
