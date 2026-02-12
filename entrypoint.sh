@@ -19,4 +19,18 @@ else
     echo "ℹ️ openclaw.json 변경 없음 — 건너뜀"
 fi
 
+# ─── 에이전트 디렉토리 자동 생성 ───
+# openclaw.json에서 에이전트 ID를 추출하여 agentDir 생성
+echo "📁 에이전트 디렉토리 확인 중..."
+AGENT_IDS=$(grep -o '"id": *"[^"]*"' "$TARGET" | sed 's/"id": *"\([^"]*\)"/\1/')
+for AGENT_ID in $AGENT_IDS; do
+    AGENT_DIR="/home/node/.openclaw/agents/$AGENT_ID/agent"
+    if [ ! -d "$AGENT_DIR" ]; then
+        mkdir -p "$AGENT_DIR"
+        echo "  ✅ 에이전트 디렉토리 생성: $AGENT_ID"
+    fi
+done
+echo "📁 에이전트 디렉토리 준비 완료"
+
 exec "$@"
+
