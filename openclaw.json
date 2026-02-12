@@ -18,8 +18,7 @@
             },
             // 샌드박싱: 비-메인 세션은 Docker 샌드박스에서 실행
             "sandbox": {
-                "mode": "non-main",
-                "scope": "agent"
+                "mode": "off"
             }
         },
 
