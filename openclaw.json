@@ -7,14 +7,14 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "anthropic/claude-opus-4-6",
-                "fallbacks": ["anthropic/claude-sonnet-4-5"]
+                "primary": "google-antigravity/claude-opus-4-6",
+                "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
             },
             "contextTokens": 50000,
             "models": {
-                "anthropic/claude-opus-4-6": { "alias": "Opus" },
-                "anthropic/claude-sonnet-4-5": { "alias": "Sonnet" },
-                "google/gemini-3-flash": { "alias": "Flash" }
+                "google-antigravity/claude-opus-4-6": { "alias": "Opus" },
+                "google-antigravity/claude-sonnet-4-5": { "alias": "Sonnet" },
+                "google-antigravity/gemini-3-flash": { "alias": "Flash" }
             },
             // 샌드박싱: 비-메인 세션은 Docker 샌드박스에서 실행
             "sandbox": {
@@ -29,8 +29,8 @@
                 "id": "pm",
                 "workspace": "./workspaces/pm",
                 "model": {
-                    "primary": "anthropic/claude-opus-4-6",
-                    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+                    "primary": "google-antigravity/claude-opus-4-6",
+                    "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@PM", "@pm", "PM_Agent"]
@@ -42,7 +42,7 @@
                 "id": "frontend",
                 "workspace": "./workspaces/frontend",
                 "model": {
-                    "primary": "google/gemini-3-flash"
+                    "primary": "google-antigravity/gemini-3-flash"
                 },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit", "browser"]
@@ -57,8 +57,8 @@
                 "id": "backend",
                 "workspace": "./workspaces/backend",
                 "model": {
-                    "primary": "anthropic/claude-opus-4-6",
-                    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+                    "primary": "google-antigravity/claude-opus-4-6",
+                    "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit"]
@@ -73,7 +73,7 @@
                 "id": "devops",
                 "workspace": "./workspaces/devops",
                 "model": {
-                    "primary": "anthropic/claude-sonnet-4-5"
+                    "primary": "google-antigravity/claude-sonnet-4-5"
                 },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit"]
@@ -88,7 +88,7 @@
                 "id": "security",
                 "workspace": "./workspaces/security",
                 "model": {
-                    "primary": "anthropic/claude-sonnet-4-5"
+                    "primary": "google-antigravity/claude-sonnet-4-5"
                 },
                 "tools": {
                     "allow": ["exec", "process", "read", "write"]
@@ -103,7 +103,7 @@
                 "id": "design",
                 "workspace": "./workspaces/design",
                 "model": {
-                    "primary": "google/gemini-3-flash"
+                    "primary": "google-antigravity/gemini-3-flash"
                 },
                 "tools": {
                     "allow": ["browser", "read", "write"]
@@ -137,7 +137,7 @@
                 "id": "qa",
                 "workspace": "./workspaces/qa",
                 "model": {
-                    "primary": "anthropic/claude-sonnet-4-5"
+                    "primary": "google-antigravity/claude-sonnet-4-5"
                 },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit"]
