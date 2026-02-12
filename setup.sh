@@ -1,13 +1,13 @@
 #!/bin/bash
 # ===========================
-# Project Nexus — Docker 초기 셋업 스크립트
+# 개포히치하이커스 — Docker 초기 셋업 스크립트
 # ===========================
 # 미니PC에서 최초 1회 실행
 # Antigravity OAuth 인증 + OpenClaw 온보딩 자동화
 
 set -e
 
-echo "🚀 Project Nexus — Docker 셋업 시작"
+echo "🚀 개포히치하이커스 — Docker 셋업 시작"
 echo ""
 
 # ─── Step 1: .env 확인 ───
@@ -57,7 +57,7 @@ echo "📊 컨테이너 상태:"
 docker compose ps
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "✅ Project Nexus 셋업 완료!"
+echo "✅ 개포히치하이커스 셋업 완료!"
 echo ""
 echo "  📡 Gateway:  http://127.0.0.1:18789"
 echo "  🔍 로그 확인: docker compose logs -f"
