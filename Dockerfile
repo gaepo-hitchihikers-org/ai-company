@@ -13,6 +13,9 @@ RUN npm install -g openclaw@latest
 RUN mkdir -p /home/node/.openclaw/workspace \
     && chown -R node:node /home/node/.openclaw
 
+# Entrypoint script (config 복사 + 시작)
+COPY --chown=node:node entrypoint.sh /entrypoint.sh
+
 USER node
 WORKDIR /home/node
 
@@ -23,4 +26,5 @@ EXPOSE 18789
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
     CMD openclaw health || exit 1
 
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["openclaw", "gateway", "--port", "18789", "--verbose"]

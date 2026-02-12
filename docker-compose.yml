@@ -5,8 +5,8 @@ services:
     ports:
       - "127.0.0.1:18789:18789"
     volumes:
-      # OpenClaw 설정
-      - ./openclaw.json:/home/node/.openclaw/openclaw.json
+      # OpenClaw 설정 — entrypoint.sh가 /config → ~/.openclaw로 복사
+      - ./openclaw.json:/config/openclaw.json:ro
       # 에이전트별 워크스페이스
       - ./workspaces:/home/node/.openclaw/workspaces
       # 에이전트 간 공유 스토리지
