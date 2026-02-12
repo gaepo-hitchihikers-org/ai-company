@@ -247,5 +247,14 @@
             "slack": { "enabled": true },
             "google-antigravity-auth": { "enabled": true }
         }
+    },
+
+    // ─── 에이전트 간 통신 ───
+    // 기본값은 OFF. 명시적으로 활성화 + 허용 목록 지정 필요.
+    "tools": {
+        "agentToAgent": {
+            "enabled": true,
+            "allow": ["pm", "frontend", "backend", "devops", "security", "design", "research", "qa"]
+        }
     }
 }
