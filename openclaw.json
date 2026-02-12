@@ -7,12 +7,12 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "google-antigravity/claude-opus-4-6",
-                "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
+                "primary": "google-antigravity/claude-opus-4-6-thinking",
+                "fallbacks": ["google-antigravity/claude-sonnet-4-5", "google-antigravity/gemini-3-flash"]
             },
             "contextTokens": 50000,
             "models": {
-                "google-antigravity/claude-opus-4-6": { "alias": "Opus" },
+                "google-antigravity/claude-opus-4-6-thinking": { "alias": "Opus" },
                 "google-antigravity/claude-sonnet-4-5": { "alias": "Sonnet" },
                 "google-antigravity/gemini-3-flash": { "alias": "Flash" }
             },
@@ -29,7 +29,7 @@
                 "id": "pm",
                 "workspace": "./workspaces/pm",
                 "model": {
-                    "primary": "google-antigravity/claude-opus-4-6",
+                    "primary": "google-antigravity/claude-opus-4-6-thinking",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "groupChat": {
@@ -57,7 +57,7 @@
                 "id": "backend",
                 "workspace": "./workspaces/backend",
                 "model": {
-                    "primary": "google-antigravity/claude-opus-4-6",
+                    "primary": "google-antigravity/claude-opus-4-6-thinking",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "tools": {
@@ -239,6 +239,25 @@
         "auth": {
             "mode": "token",
             "token": "875831d84fc12f1b0bb5f9f3dacad9406aa4ab54e0db24d8"
+        }
+    },
+
+    // ─── 커스텀 모델 등록 ───
+    "models": {
+        "mode": "merge",
+        "providers": {
+            "google-antigravity": {
+                "models": [
+                    {
+                        "id": "claude-opus-4-6-thinking",
+                        "name": "Claude Opus 4.6 Thinking",
+                        "reasoning": true,
+                        "input": ["text", "image"],
+                        "contextWindow": 195000,
+                        "maxTokens": 16384
+                    }
+                ]
+            }
         }
     }
 }
