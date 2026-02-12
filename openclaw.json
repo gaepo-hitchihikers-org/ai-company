@@ -7,14 +7,14 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "google-antigravity/claude-opus-4-6-thinking",
-                "fallbacks": ["google-antigravity/claude-sonnet-4-5", "google-antigravity/gemini-3-flash"]
+                "primary": "google-antigravity/claude-sonnet-4-5",
+                "fallbacks": ["google-antigravity/gemini-3-pro-high"]
             },
             "contextTokens": 50000,
             "models": {
-                "google-antigravity/claude-opus-4-6-thinking": { "alias": "Opus" },
+                "google-antigravity/claude-opus-4-5-thinking": { "alias": "Opus" },
                 "google-antigravity/claude-sonnet-4-5": { "alias": "Sonnet" },
-                "google-antigravity/gemini-3-flash": { "alias": "Flash" }
+                "google-antigravity/gemini-3-pro-high": { "alias": "ProHigh" }
             },
             // 샌드박싱: 비-메인 세션은 Docker 샌드박스에서 실행
             "sandbox": {
@@ -29,7 +29,7 @@
                 "id": "pm",
                 "workspace": "./workspaces/pm",
                 "model": {
-                    "primary": "google-antigravity/claude-opus-4-6-thinking",
+                    "primary": "google-antigravity/claude-opus-4-5-thinking",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "groupChat": {
@@ -42,7 +42,7 @@
                 "id": "frontend",
                 "workspace": "./workspaces/frontend",
                 "model": {
-                    "primary": "google-antigravity/gemini-3-flash"
+                    "primary": "google-antigravity/gemini-3-pro-high"
                 },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit", "browser"]
@@ -57,7 +57,7 @@
                 "id": "backend",
                 "workspace": "./workspaces/backend",
                 "model": {
-                    "primary": "google-antigravity/claude-opus-4-6-thinking",
+                    "primary": "google-antigravity/claude-opus-4-5-thinking",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
                 },
                 "tools": {
@@ -103,7 +103,7 @@
                 "id": "design",
                 "workspace": "./workspaces/design",
                 "model": {
-                    "primary": "google-antigravity/gemini-3-flash"
+                    "primary": "google-antigravity/gemini-3-pro-high"
                 },
                 "tools": {
                     "allow": ["browser", "read", "write"]
@@ -118,7 +118,7 @@
                 "id": "research",
                 "workspace": "./workspaces/research",
                 "model": {
-                    "primary": "google/gemini-3-flash"
+                    "primary": "google-antigravity/gemini-3-pro-high"
                 },
                 "tools": {
                     "allow": ["browser", "read", "write"]
@@ -239,25 +239,6 @@
         "auth": {
             "mode": "token",
             "token": "875831d84fc12f1b0bb5f9f3dacad9406aa4ab54e0db24d8"
-        }
-    },
-
-    // ─── 커스텀 모델 등록 ───
-    "models": {
-        "mode": "merge",
-        "providers": {
-            "google-antigravity": {
-                "models": [
-                    {
-                        "id": "claude-opus-4-6-thinking",
-                        "name": "Claude Opus 4.6 Thinking",
-                        "reasoning": true,
-                        "input": ["text", "image"],
-                        "contextWindow": 195000,
-                        "maxTokens": 16384
-                    }
-                ]
-            }
         }
     }
 }
