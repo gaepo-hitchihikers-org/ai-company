@@ -157,35 +157,29 @@
             "agentId": "pm",
             "match": {
                 "channel": "slack",
-                "peer": { "kind": "channel", "id": "C_PM_STRATEGY" }
+                "peer": { "kind": "channel", "id": "C0AEHKR85S7" }
             }
         },
         {
             "agentId": "pm",
             "match": {
                 "channel": "slack",
-                "peer": { "kind": "channel", "id": "C_COLLAB_BRIDGE" }
+                "peer": { "kind": "channel", "id": "C0AFJAGC280" }
             }
         },
         {
             "agentId": "pm",
             "match": {
                 "channel": "slack",
-                "peer": { "kind": "channel", "id": "C_ALERTS" }
+                "peer": { "kind": "channel", "id": "C0AF2V9S0QH" }
             }
         },
-        {
-            "agentId": "frontend",
-            "match": {
-                "channel": "slack",
-                "peer": { "kind": "channel", "id": "C_DEV_LOGS" }
-            }
-        },
+
         {
             "agentId": "design",
             "match": {
                 "channel": "slack",
-                "peer": { "kind": "channel", "id": "C_DESIGN_REVIEW" }
+                "peer": { "kind": "channel", "id": "C0AELK28K1T" }
             }
         }
     ],
@@ -194,26 +188,25 @@
     "channels": {
         "slack": {
             "enabled": true,
-            // ⚠️ 채널 키도 실제 Slack 채널 ID로 변경 필요
             "channels": {
-                "C_COLLAB_BRIDGE": {
+                "C0AFJAGC280": {
                     "allow": true,
                     "requireMention": true,
                     "allowBots": true
                 },
-                "C_PM_STRATEGY": {
+                "C0AEHKR85S7": {
                     "allow": true,
                     "requireMention": false
                 },
-                "C_DEV_LOGS": {
+                "C0AETKYQP3N": {
                     "allow": true,
                     "requireMention": true
                 },
-                "C_DESIGN_REVIEW": {
+                "C0AELK28K1T": {
                     "allow": true,
                     "requireMention": true
                 },
-                "C_ALERTS": {
+                "C0AF2V9S0QH": {
                     "allow": true,
                     "requireMention": false
                 }
