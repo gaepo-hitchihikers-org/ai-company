@@ -1,0 +1,25 @@
+services:
+  openclaw-gateway:
+    build: .
+    container_name: nexus-gateway
+    ports:
+      - "127.0.0.1:18789:18789"
+    volumes:
+      # OpenClaw 설정
+      - ./openclaw.json:/home/node/.openclaw/openclaw.json:ro
+      # 에이전트별 워크스페이스
+      - ./workspaces:/home/node/.openclaw/workspaces
+      # 에이전트 간 공유 스토리지
+      - ./shared:/home/node/.openclaw/shared
+      # OpenClaw 데이터 영속화
+      - openclaw-data:/home/node/.openclaw
+    env_file: .env
+    restart: unless-stopped
+    # 리소스 제한 (미니PC용)
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  openclaw-data:

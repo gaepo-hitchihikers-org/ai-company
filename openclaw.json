@@ -1,0 +1,200 @@
+{
+    // ===========================
+    // Project Nexus — OpenClaw 설정
+    // ===========================
+    // 멀티에이전트 + Slack 통신 + 모델 계층화
+
+    "agents": {
+        "defaults": {
+            "model": {
+                "primary": "anthropic/claude-opus-4-6",
+                "fallbacks": ["anthropic/claude-sonnet-4-5"]
+            },
+            "contextTokens": 50000,
+            "models": {
+                "anthropic/claude-opus-4-6": { "alias": "Opus" },
+                "anthropic/claude-sonnet-4-5": { "alias": "Sonnet" },
+                "google/gemini-3-flash": { "alias": "Flash" }
+            },
+            // 샌드박싱: 비-메인 세션은 Docker 샌드박스에서 실행
+            "sandbox": {
+                "mode": "non-main",
+                "scope": "agent"
+            }
+        },
+
+        "list": [
+            // ─── PM_Agent: 매니저 ───
+            {
+                "id": "pm",
+                "workspace": "./workspaces/pm",
+                "model": {
+                    "primary": "anthropic/claude-opus-4-6",
+                    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+                },
+                "groupChat": {
+                    "mentionPatterns": ["@PM", "@pm", "PM_Agent"]
+                }
+            },
+
+            // ─── Dev_Agent: 개발자 ───
+            {
+                "id": "dev",
+                "workspace": "./workspaces/dev",
+                "model": {
+                    "primary": "anthropic/claude-opus-4-6",
+                    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+                },
+                "tools": {
+                    "allow": [
+                        "exec",
+                        "process",
+                        "read",
+                        "write",
+                        "edit",
+                        "browser"
+                    ]
+                },
+                "groupChat": {
+                    "mentionPatterns": ["@Dev", "@dev", "Dev_Agent"]
+                }
+            },
+
+            // ─── Design_Agent: 디자이너 ───
+            {
+                "id": "design",
+                "workspace": "./workspaces/design",
+                "model": {
+                    "primary": "google/gemini-3-flash"
+                },
+                "tools": {
+                    "allow": ["browser", "read", "write"]
+                },
+                "groupChat": {
+                    "mentionPatterns": ["@Design", "@design", "Design_Agent"]
+                }
+            },
+
+            // ─── Research_Agent: 리서처 & 그로스 ───
+            {
+                "id": "research",
+                "workspace": "./workspaces/research",
+                "model": {
+                    "primary": "google/gemini-3-flash"
+                },
+                "tools": {
+                    "allow": ["browser", "read", "write"]
+                },
+                "groupChat": {
+                    "mentionPatterns": [
+                        "@Research",
+                        "@research",
+                        "Research_Agent"
+                    ]
+                }
+            },
+
+            // ─── QA_Agent: 품질 관리 ───
+            {
+                "id": "qa",
+                "workspace": "./workspaces/qa",
+                "model": {
+                    "primary": "anthropic/claude-sonnet-4-5"
+                },
+                "tools": {
+                    "allow": ["exec", "process", "read", "write", "edit"]
+                },
+                "groupChat": {
+                    "mentionPatterns": ["@QA", "@qa", "QA_Agent"]
+                }
+            }
+        ]
+    },
+
+    // ─── Slack 채널 → 에이전트 바인딩 ───
+    "bindings": [
+        {
+            "agentId": "pm",
+            "match": {
+                "channel": "slack",
+                "chatType": "channel",
+                "chatId": "pm-strategy"
+            }
+        },
+        {
+            "agentId": "pm",
+            "match": {
+                "channel": "slack",
+                "chatType": "channel",
+                "chatId": "collab-bridge"
+            }
+        },
+        {
+            "agentId": "pm",
+            "match": {
+                "channel": "slack",
+                "chatType": "channel",
+                "chatId": "alerts"
+            }
+        },
+        {
+            "agentId": "dev",
+            "match": {
+                "channel": "slack",
+                "chatType": "channel",
+                "chatId": "dev-logs"
+            }
+        },
+        {
+            "agentId": "design",
+            "match": {
+                "channel": "slack",
+                "chatType": "channel",
+                "chatId": "design-review"
+            }
+        }
+    ],
+
+    // ─── Slack 채널 설정 ───
+    "channels": {
+        "slack": {
+            "enabled": true,
+            "mode": "socket",
+            "groupPolicy": "open",
+            // 채널별 세분화 설정
+            "channels": {
+                "collab-bridge": {
+                    "requireMention": true,
+                    "allowBots": true
+                },
+                "pm-strategy": {
+                    "requireMention": false
+                },
+                "dev-logs": {
+                    "requireMention": true
+                },
+                "design-review": {
+                    "requireMention": true
+                },
+                "alerts": {
+                    "requireMention": false
+                }
+            }
+        }
+    },
+
+    // ─── 세션 설정 ───
+    "session": {
+        "dmScope": "per-channel-peer",
+        "agentToAgent": {
+            "maxPingPongTurns": 3
+        }
+    },
+
+    // ─── 크론 설정 ───
+    "cron": {
+        "enabled": true,
+        "maxConcurrentRuns": 2,
+        "sessionRetention": "24h"
+    }
+}
