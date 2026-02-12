@@ -47,6 +47,12 @@ echo ""
 echo "✅ 온보딩 완료!"
 echo ""
 
+# ─── Step 3.5: Doctor 자동 수정 ───
+echo "🔧 설정 자동 수정 중..."
+docker compose run --rm openclaw-gateway openclaw doctor --fix
+echo "✅ doctor --fix 완료"
+echo ""
+
 # ─── Step 4: Gateway 기동 ───
 echo "🚀 Gateway + Browser 컨테이너 시작..."
 docker compose up -d

@@ -237,7 +237,8 @@
     "gateway": {
         "mode": "local",
         "auth": {
-            "mode": "off"
+            "mode": "token",
+            "token": "875831d84fc12f1b0bb5f9f3dacad9406aa4ab54e0db24d8"
         }
     }
 }
