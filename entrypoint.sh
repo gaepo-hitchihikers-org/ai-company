@@ -19,18 +19,26 @@ else
     echo "ℹ️ openclaw.json 변경 없음 — 건너뜀"
 fi
 
-# ─── 에이전트 디렉토리 자동 생성 ───
-# openclaw.json에서 에이전트 ID를 추출하여 agentDir 생성
+# ─── 에이전트 디렉토리 + 인증 자동 설정 ───
+# openclaw.json에서 에이전트 ID를 추출하여 agentDir 생성 + auth 복사
 echo "📁 에이전트 디렉토리 확인 중..."
 AGENT_IDS=$(grep -o '"id": *"[^"]*"' "$TARGET" | sed 's/"id": *"\([^"]*\)"/\1/')
+PM_AUTH="/home/node/.openclaw/agents/pm/agent/auth-profiles.json"
+
 for AGENT_ID in $AGENT_IDS; do
     AGENT_DIR="/home/node/.openclaw/agents/$AGENT_ID/agent"
     if [ ! -d "$AGENT_DIR" ]; then
         mkdir -p "$AGENT_DIR"
         echo "  ✅ 에이전트 디렉토리 생성: $AGENT_ID"
     fi
+
+    # PM의 인증 정보를 다른 에이전트에 복사 (없는 경우에만)
+    AGENT_AUTH="$AGENT_DIR/auth-profiles.json"
+    if [ "$AGENT_ID" != "pm" ] && [ -f "$PM_AUTH" ] && [ ! -f "$AGENT_AUTH" ]; then
+        cp "$PM_AUTH" "$AGENT_AUTH"
+        echo "  🔑 인증 복사: pm → $AGENT_ID"
+    fi
 done
-echo "📁 에이전트 디렉토리 준비 완료"
+echo "📁 에이전트 준비 완료"
 
 exec "$@"
-
