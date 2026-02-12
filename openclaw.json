@@ -158,13 +158,8 @@
                 "peer": { "kind": "channel", "id": "C0AEHKR85S7" }
             }
         },
-        {
-            "agentId": "pm",
-            "match": {
-                "channel": "slack",
-                "peer": { "kind": "channel", "id": "C0AFJAGC280" }
-            }
-        },
+
+
         {
             "agentId": "pm",
             "match": {
@@ -256,5 +251,12 @@
             "enabled": true,
             "allow": ["pm", "frontend", "backend", "devops", "security", "design", "research", "qa"]
         }
+    },
+
+    // ─── Broadcast: #collab-bridge 채널을 모든 에이전트가 공유 ───
+    // @mention 기반으로 해당 에이전트가 응답. 멘션 없는 메시지는 default(pm)가 처리.
+    "broadcast": {
+        "strategy": "parallel",
+        "channel:C0AFJAGC280": ["pm", "frontend", "backend", "devops", "security", "design", "research", "qa"]
     }
 }
