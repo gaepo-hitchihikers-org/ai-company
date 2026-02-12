@@ -1,15 +1,12 @@
 #!/bin/bash
 set -e
 
-# openclaw.json을 볼륨 안으로 복사 (atomic rename 가능하도록)
-if [ -f /config/openclaw.json ]; then
+# 최초 실행 시에만 openclaw.json 복사 (이후 doctor --fix 변경사항 보존)
+if [ ! -f /home/node/.openclaw/openclaw.json ]; then
     cp /config/openclaw.json /home/node/.openclaw/openclaw.json
-    echo "✅ openclaw.json 복사 완료"
-fi
-
-# 워크스페이스 심볼릭 링크가 없으면 생성
-if [ ! -d /home/node/.openclaw/workspaces ]; then
-    ln -s /workspaces /home/node/.openclaw/workspaces
+    echo "✅ openclaw.json 초기 복사 완료"
+else
+    echo "ℹ️ openclaw.json 이미 존재 — 건너뜀"
 fi
 
 exec "$@"
