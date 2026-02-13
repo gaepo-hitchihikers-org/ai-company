@@ -206,7 +206,7 @@ nexus-ai/
 
 각 앱에서:
 
-1. **Bot** → Add Bot → Token 복사
+1. **Bot** → Add Bot → Token 복사하기
 2. **Privileged Gateway Intents** → Message Content Intent ✅, Server Members
    Intent ✅
 3. **OAuth2** → scopes: `bot`, `applications.commands` → permissions: View
