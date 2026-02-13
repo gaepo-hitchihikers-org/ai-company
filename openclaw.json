@@ -73,7 +73,7 @@
                 },
                 "identity": { "name": "Backend" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "edit", "message"]
+                    "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["<@1471758619648331878>", "<@!1471758619648331878>"]
@@ -90,7 +90,7 @@
                 },
                 "identity": { "name": "DevOps" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "edit", "message"]
+                    "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["<@1471760318664413398>", "<@!1471760318664413398>"]
@@ -107,7 +107,7 @@
                 },
                 "identity": { "name": "Security" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "message"]
+                    "allow": ["exec", "process", "read", "write", "browser", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["<@1471762405590564987>", "<@!1471762405590564987>"]
@@ -124,7 +124,7 @@
                 },
                 "identity": { "name": "Design" },
                 "tools": {
-                    "allow": ["browser", "read", "write", "message"]
+                    "allow": ["exec", "browser", "read", "write", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["<@1471763570139336922>", "<@!1471763570139336922>"]
@@ -141,7 +141,7 @@
                 },
                 "identity": { "name": "Research" },
                 "tools": {
-                    "allow": ["browser", "read", "write", "message"]
+                    "allow": ["exec", "browser", "read", "write", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["<@1471766532945088522>", "<@!1471766532945088522>"]
@@ -158,7 +158,7 @@
                 },
                 "identity": { "name": "QA" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "edit", "message"]
+                    "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["<@1471767984073605293>", "<@!1471767984073605293>"]
