@@ -33,7 +33,7 @@
                 },
                 "identity": { "name": "PM" },
                 "tools": {
-                    "allow": ["exec", "read", "write", "edit", "browser"]
+                    "allow": ["exec", "read", "write", "edit", "browser", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@PM", "@pm", "PM"]
