@@ -3,14 +3,17 @@ set -e
 
 # ─── 디렉토리 권한 수정 (root로 실행) ───
 echo "📂 디렉토리 권한 수정 중..."
-for DIR in /home/node/.openclaw/shared /home/node/.openclaw/workspaces /home/node/.openclaw; do
+for DIR in /home/node/.openclaw/shared /home/node/.openclaw/workspaces /home/node/.openclaw/agents /home/node/.openclaw/credentials /home/node/.openclaw/workspace /home/node/.openclaw; do
     mkdir -p "$DIR"
     chown node:node "$DIR"
     echo "  ✅ $DIR → node:node"
 done
-# workspaces 하위 디렉토리도 재귀적으로 수정
+# 하위 디렉토리도 재귀적으로 수정
 chown -R node:node /home/node/.openclaw/workspaces 2>/dev/null || true
 chown -R node:node /home/node/.openclaw/shared 2>/dev/null || true
+chown -R node:node /home/node/.openclaw/agents 2>/dev/null || true
+chown -R node:node /home/node/.openclaw/credentials 2>/dev/null || true
+chown -R node:node /home/node/.openclaw/workspace 2>/dev/null || true
 echo "📂 권한 수정 완료"
 
 TARGET="/home/node/.openclaw/openclaw.json"
