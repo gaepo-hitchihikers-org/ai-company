@@ -191,31 +191,30 @@
             "groupPolicy": "allowlist",
             "guilds": {
                 // Discord 서버 ID — 실제 값으로 교체
-                "GUILD_ID": {
-                    // 기본: @mention 있어야 응답 (에이전트는 호출받을 때만 반응)
+                "1471749338538442958": {
+                    // 모든 채널 requireMention: true — @mention된 봇만 응답
+                    // 채널 권한 설정 없이도 안전 (모든 봇이 모든 채널에 있어도 OK)
                     "requireMention": true,
                     "channels": {
-                        // #pm-strategy — 사장 ↔ PM (PM만 참여, mention 불필요)
-                        "PM_STRATEGY_CHANNEL_ID": {
-                            "allow": true,
-                            "requireMention": false
-                        },
-                        // #collab-bridge — 전체 팀 협업 (8개 봇 모두 참여)
-                        "COLLAB_BRIDGE_CHANNEL_ID": {
+                        // #pm-strategy
+                        "1471753300507361302": {
                             "allow": true
                         },
-                        // #dev-log — 개발 로그
-                        "DEV_LOG_CHANNEL_ID": {
+                        // #collab-bridge
+                        "1471753344367333376": {
                             "allow": true
                         },
-                        // #design-review — 디자인 리뷰
-                        "DESIGN_REVIEW_CHANNEL_ID": {
+                        // #dev-log
+                        "1471753374121590930": {
                             "allow": true
                         },
-                        // #alert — 긴급 알림 (mention 불필요)
-                        "ALERT_CHANNEL_ID": {
-                            "allow": true,
-                            "requireMention": false
+                        // #design-review
+                        "1471753402471022683": {
+                            "allow": true
+                        },
+                        // #alert
+                        "1471753432498180096": {
+                            "allow": true
                         }
                     }
                 }
