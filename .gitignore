@@ -3,6 +3,11 @@
 
 # Agent runtime data (에이전트가 런타임에 생성하는 파일들)
 shared/nexus_storage/
+workspaces/*/HEARTBEAT.md
+workspaces/*/IDENTITY.md
+workspaces/*/SOUL.md
+workspaces/*/TOOLS.md
+workspaces/*/USER.md
 
 # Docker
 docker-data/
