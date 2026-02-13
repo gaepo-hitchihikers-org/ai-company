@@ -17,8 +17,12 @@ jobs:
       - name: Validate openclaw.json parses
         run: |
           python - <<'PY'
-          import json
-          json.load(open('openclaw.json','r',encoding='utf-8'))
+          import json, re
+          with open('openclaw.json', 'r', encoding='utf-8') as f:
+              text = f.read()
+          # JSONC: // 주석 제거 (문자열 내부의 //는 보존)
+          text = re.sub(r'(?<!["\w])//.*', '', text)
+          json.loads(text)
           print('openclaw.json OK')
           PY
 
