@@ -1,6 +1,17 @@
 #!/bin/bash
 set -e
 
+# ─── 디렉토리 권한 사전 검증 ───
+echo "📂 디렉토리 권한 확인 중..."
+for DIR in /home/node/.openclaw/shared /home/node/.openclaw/workspaces; do
+    mkdir -p "$DIR" 2>/dev/null || true
+    if [ ! -w "$DIR" ]; then
+        echo "  ⚠️ $DIR 쓰기 권한 없음! 호스트에서 chmod 777 또는 chown 필요"
+    else
+        echo "  ✅ $DIR OK"
+    fi
+done
+
 TARGET="/home/node/.openclaw/openclaw.json"
 SOURCE="/config/openclaw.json"
 

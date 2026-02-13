@@ -12,6 +12,8 @@ RUN npm install -g openclaw@2026.2.9
 
 # Create openclaw user home structure
 RUN mkdir -p /home/node/.openclaw/workspace \
+    /home/node/.openclaw/workspaces \
+    /home/node/.openclaw/shared \
     && chown -R node:node /home/node/.openclaw
 
 # Entrypoint script (config 복사 + 시작)
