@@ -31,6 +31,11 @@ else
     echo "ℹ️ openclaw.json 변경 없음 — 건너뜀"
 fi
 
+# ─── JSONC → JSON 변환 (jq는 주석을 파싱할 수 없음) ───
+echo "🔧 JSONC 주석 제거 중..."
+sed -i '/^\s*\/\//d' "$TARGET"
+echo "  ✅ 주석 제거 완료"
+
 # ─── Discord Bot Token 주입 ───
 # 환경변수 DISCORD_BOT_TOKEN_<AGENT_ID>를 accounts에 주입
 echo "🔑 Discord Bot Token 주입 중..."
