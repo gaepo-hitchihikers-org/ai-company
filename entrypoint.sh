@@ -1,16 +1,17 @@
 #!/bin/bash
 set -e
 
-# ─── 디렉토리 권한 사전 검증 ───
-echo "📂 디렉토리 권한 확인 중..."
-for DIR in /home/node/.openclaw/shared /home/node/.openclaw/workspaces; do
-    mkdir -p "$DIR" 2>/dev/null || true
-    if [ ! -w "$DIR" ]; then
-        echo "  ⚠️ $DIR 쓰기 권한 없음! 호스트에서 chmod 777 또는 chown 필요"
-    else
-        echo "  ✅ $DIR OK"
-    fi
+# ─── 디렉토리 권한 수정 (root로 실행) ───
+echo "📂 디렉토리 권한 수정 중..."
+for DIR in /home/node/.openclaw/shared /home/node/.openclaw/workspaces /home/node/.openclaw; do
+    mkdir -p "$DIR"
+    chown node:node "$DIR"
+    echo "  ✅ $DIR → node:node"
 done
+# workspaces 하위 디렉토리도 재귀적으로 수정
+chown -R node:node /home/node/.openclaw/workspaces 2>/dev/null || true
+chown -R node:node /home/node/.openclaw/shared 2>/dev/null || true
+echo "📂 권한 수정 완료"
 
 TARGET="/home/node/.openclaw/openclaw.json"
 SOURCE="/config/openclaw.json"
@@ -81,4 +82,5 @@ for AGENT_ID in $AGENT_IDS; do
 done
 echo "📁 에이전트 준비 완료"
 
-exec "$@"
+# ─── gosu로 node 유저 전환 후 실행 ───
+exec gosu node "$@"

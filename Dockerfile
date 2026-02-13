@@ -1,10 +1,11 @@
 FROM node:22-bookworm-slim
 
-# System dependencies
+# System dependencies + gosu (root→node 전환용)
 RUN apt-get update && apt-get install -y \
     git \
     curl \
     jq \
+    gosu \
     && rm -rf /var/lib/apt/lists/*
 
 # Install OpenClaw (2026.2.9 고정 — 2026.2.12에 multi-agent session path 버그 있음)
@@ -16,10 +17,10 @@ RUN mkdir -p /home/node/.openclaw/workspace \
     /home/node/.openclaw/shared \
     && chown -R node:node /home/node/.openclaw
 
-# Entrypoint script (config 복사 + 시작)
-COPY --chown=node:node entrypoint.sh /entrypoint.sh
+# Entrypoint script (config 복사 + 권한 수정 + gosu node 전환)
+COPY --chown=root:root entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-USER node
 WORKDIR /home/node
 
 # Gateway port
