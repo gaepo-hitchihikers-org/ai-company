@@ -8,15 +8,17 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "openai-codex/o3",
-                "fallbacks": ["openai-codex/gpt-5-mini"]
+                "primary": "openai-codex/gpt-5.3-codex",
+                "fallbacks": ["openai-codex/gpt-5.1-codex-mini"]
             },
             "contextTokens": 200000,
             "models": {
-                "openai-codex/o3": { "alias": "o3" },
-                "openai-codex/gpt-5-mini": { "alias": "gpt5mini" },
-                "openai-codex/gpt-5.1-codex": { "alias": "codex" },
-                "openai-codex/o4-mini": { "alias": "o4mini" }
+                "openai-codex/gpt-5.3-codex": { "alias": "codex" },
+                "openai-codex/gpt-5.2-codex": { "alias": "codex52" },
+                "openai-codex/gpt-5.1-codex-mini": { "alias": "mini" },
+                "openai-codex/gpt-5.1-codex-max": { "alias": "max" },
+                "openai-codex/gpt-5.2": { "alias": "gpt52" },
+                "openai-codex/gpt-5.1": { "alias": "gpt51" }
             },
             "sandbox": {
                 "mode": "off"
@@ -31,8 +33,8 @@
                 "workspace": "~/.openclaw/workspaces/pm",
                 "agentDir": "~/.openclaw/agents/pm/agent",
                 "model": {
-                    "primary": "openai-codex/o3",
-                    "fallbacks": ["openai-codex/gpt-5-mini"]
+                    "primary": "openai-codex/gpt-5.2",
+                    "fallbacks": ["openai-codex/gpt-5.1-codex-mini"]
                 },
                 "identity": { "name": "PM" },
                 "tools": {
@@ -49,7 +51,7 @@
                 "workspace": "~/.openclaw/workspaces/frontend",
                 "agentDir": "~/.openclaw/agents/frontend/agent",
                 "model": {
-                    "primary": "openai-codex/gpt-5.1-codex"
+                    "primary": "openai-codex/gpt-5.3-codex"
                 },
                 "identity": { "name": "Frontend" },
                 "tools": {
@@ -66,8 +68,8 @@
                 "workspace": "~/.openclaw/workspaces/backend",
                 "agentDir": "~/.openclaw/agents/backend/agent",
                 "model": {
-                    "primary": "openai-codex/o3",
-                    "fallbacks": ["openai-codex/gpt-5-mini"]
+                    "primary": "openai-codex/gpt-5.3-codex",
+                    "fallbacks": ["openai-codex/gpt-5.1-codex-mini"]
                 },
                 "identity": { "name": "Backend" },
                 "tools": {
@@ -84,7 +86,7 @@
                 "workspace": "~/.openclaw/workspaces/devops",
                 "agentDir": "~/.openclaw/agents/devops/agent",
                 "model": {
-                    "primary": "openai-codex/o4-mini"
+                    "primary": "openai-codex/gpt-5.3-codex"
                 },
                 "identity": { "name": "DevOps" },
                 "tools": {
@@ -101,7 +103,7 @@
                 "workspace": "~/.openclaw/workspaces/security",
                 "agentDir": "~/.openclaw/agents/security/agent",
                 "model": {
-                    "primary": "openai-codex/o3"
+                    "primary": "openai-codex/gpt-5.2"
                 },
                 "identity": { "name": "Security" },
                 "tools": {
@@ -118,7 +120,7 @@
                 "workspace": "~/.openclaw/workspaces/design",
                 "agentDir": "~/.openclaw/agents/design/agent",
                 "model": {
-                    "primary": "openai-codex/gpt-5.1-codex"
+                    "primary": "openai-codex/gpt-5.2"
                 },
                 "identity": { "name": "Design" },
                 "tools": {
@@ -135,7 +137,7 @@
                 "workspace": "~/.openclaw/workspaces/research",
                 "agentDir": "~/.openclaw/agents/research/agent",
                 "model": {
-                    "primary": "openai-codex/gpt-5-mini"
+                    "primary": "openai-codex/gpt-5.2"
                 },
                 "identity": { "name": "Research" },
                 "tools": {
@@ -152,7 +154,7 @@
                 "workspace": "~/.openclaw/workspaces/qa",
                 "agentDir": "~/.openclaw/agents/qa/agent",
                 "model": {
-                    "primary": "openai-codex/o4-mini"
+                    "primary": "openai-codex/gpt-5.3-codex"
                 },
                 "identity": { "name": "QA" },
                 "tools": {
