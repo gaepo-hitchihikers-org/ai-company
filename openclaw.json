@@ -25,7 +25,8 @@
             {
                 "id": "pm",
                 "default": true,
-                "workspace": "./workspaces/pm",
+                "workspace": "~/.openclaw/workspaces/pm",
+                "agentDir": "~/.openclaw/agents/pm/agent",
                 "model": {
                     "primary": "google-antigravity/claude-sonnet-4-5",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
@@ -42,7 +43,8 @@
             // ─── Frontend_Agent ───
             {
                 "id": "frontend",
-                "workspace": "./workspaces/frontend",
+                "workspace": "~/.openclaw/workspaces/frontend",
+                "agentDir": "~/.openclaw/agents/frontend/agent",
                 "model": {
                     "primary": "google-antigravity/gemini-3-pro-high"
                 },
@@ -58,7 +60,8 @@
             // ─── Backend_Agent ───
             {
                 "id": "backend",
-                "workspace": "./workspaces/backend",
+                "workspace": "~/.openclaw/workspaces/backend",
+                "agentDir": "~/.openclaw/agents/backend/agent",
                 "model": {
                     "primary": "google-antigravity/claude-sonnet-4-5",
                     "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
@@ -75,7 +78,8 @@
             // ─── DevOps_Agent ───
             {
                 "id": "devops",
-                "workspace": "./workspaces/devops",
+                "workspace": "~/.openclaw/workspaces/devops",
+                "agentDir": "~/.openclaw/agents/devops/agent",
                 "model": {
                     "primary": "google-antigravity/claude-sonnet-4-5"
                 },
@@ -91,7 +95,8 @@
             // ─── Security_Agent ───
             {
                 "id": "security",
-                "workspace": "./workspaces/security",
+                "workspace": "~/.openclaw/workspaces/security",
+                "agentDir": "~/.openclaw/agents/security/agent",
                 "model": {
                     "primary": "google-antigravity/claude-sonnet-4-5"
                 },
@@ -107,7 +112,8 @@
             // ─── Design_Agent ───
             {
                 "id": "design",
-                "workspace": "./workspaces/design",
+                "workspace": "~/.openclaw/workspaces/design",
+                "agentDir": "~/.openclaw/agents/design/agent",
                 "model": {
                     "primary": "google-antigravity/gemini-3-pro-high"
                 },
@@ -123,7 +129,8 @@
             // ─── Research_Agent ───
             {
                 "id": "research",
-                "workspace": "./workspaces/research",
+                "workspace": "~/.openclaw/workspaces/research",
+                "agentDir": "~/.openclaw/agents/research/agent",
                 "model": {
                     "primary": "google-antigravity/gemini-3-pro-high"
                 },
@@ -139,7 +146,8 @@
             // ─── QA_Agent ───
             {
                 "id": "qa",
-                "workspace": "./workspaces/qa",
+                "workspace": "~/.openclaw/workspaces/qa",
+                "agentDir": "~/.openclaw/agents/qa/agent",
                 "model": {
                     "primary": "google-antigravity/claude-sonnet-4-5"
                 },
