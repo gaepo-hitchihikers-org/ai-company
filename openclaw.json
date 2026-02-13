@@ -103,7 +103,7 @@
                 "workspace": "~/.openclaw/workspaces/security",
                 "agentDir": "~/.openclaw/agents/security/agent",
                 "model": {
-                    "primary": "openai-codex/gpt-5.2"
+                    "primary": "openai-codex/gpt-5.3-codex"
                 },
                 "identity": { "name": "Security" },
                 "tools": {
