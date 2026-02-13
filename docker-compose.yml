@@ -19,6 +19,7 @@ services:
     depends_on:
       - browser
     restart: unless-stopped
+    mem_limit: 2g
     # 리소스 제한 (미니PC용)
     deploy:
       resources:
@@ -29,6 +30,7 @@ services:
     image: browserless/chrome:latest
     container_name: nexus-browser
     restart: unless-stopped
+    mem_limit: 1g
     environment:
       - MAX_CONCURRENT_SESSIONS=5
       - CONNECTION_TIMEOUT=120000

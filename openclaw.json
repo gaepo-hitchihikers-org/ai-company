@@ -41,7 +41,7 @@
                     "allow": ["exec", "read", "write", "edit", "browser", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@PM", "@pm", "PM"]
+                    "mentionPatterns": ["<@1471753697628520522>", "<@!1471753697628520522>", "@PM", "@pm", "PM"]
                 }
             },
 
@@ -58,7 +58,7 @@
                     "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@Frontend", "@frontend", "Frontend"]
+                    "mentionPatterns": ["<@1471757333494497331>", "<@!1471757333494497331>", "@Frontend", "@frontend", "Frontend"]
                 }
             },
 
@@ -76,7 +76,7 @@
                     "allow": ["exec", "process", "read", "write", "edit", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@Backend", "@backend", "Backend"]
+                    "mentionPatterns": ["<@1471758619648331878>", "<@!1471758619648331878>", "@Backend", "@backend", "Backend"]
                 }
             },
 
@@ -93,7 +93,7 @@
                     "allow": ["exec", "process", "read", "write", "edit", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@DevOps", "@devops", "DevOps"]
+                    "mentionPatterns": ["<@1471760318664413398>", "<@!1471760318664413398>", "@DevOps", "@devops", "DevOps"]
                 }
             },
 
@@ -110,7 +110,7 @@
                     "allow": ["exec", "process", "read", "write", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@Security", "@security", "Security"]
+                    "mentionPatterns": ["<@1471762405590564987>", "<@!1471762405590564987>", "@Security", "@security", "Security"]
                 }
             },
 
@@ -127,7 +127,7 @@
                     "allow": ["browser", "read", "write", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@Design", "@design", "Design"]
+                    "mentionPatterns": ["<@1471763570139336922>", "<@!1471763570139336922>", "@Design", "@design", "Design"]
                 }
             },
 
@@ -144,7 +144,7 @@
                     "allow": ["browser", "read", "write", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@Research", "@research", "Research"]
+                    "mentionPatterns": ["<@1471766532945088522>", "<@!1471766532945088522>", "@Research", "@research", "Research"]
                 }
             },
 
@@ -161,7 +161,7 @@
                     "allow": ["exec", "process", "read", "write", "edit", "message"]
                 },
                 "groupChat": {
-                    "mentionPatterns": ["@QA", "@qa", "QA"]
+                    "mentionPatterns": ["<@1471767984073605293>", "<@!1471767984073605293>", "@QA", "@qa", "QA"]
                 }
             }
         ]
@@ -260,7 +260,7 @@
         "mode": "local",
         "auth": {
             "mode": "token",
-            "token": "875831d84fc12f1b0bb5f9f3dacad9406aa4ab54e0db24d8"
+            "token": ""
         }
     },
 

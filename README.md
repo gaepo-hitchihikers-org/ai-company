@@ -107,7 +107,7 @@ nexus-ai/
 ├── Dockerfile
 ├── docker-compose.yml
 ├── openclaw.json                  # 8개 봇 + Discord 설정
-├── .env / .env.example            # 8개 Bot Token + API Key
+├── .env / .env.example            # 서버/채널 ID + 8개 Bot Token + Gateway Token
 ├── workspaces/                    # 에이전트별 워크스페이스
 │   ├── pm/AGENTS.md
 │   ├── frontend/AGENTS.md
@@ -220,7 +220,7 @@ nexus-ai/
 git clone git@github.com:kosuha/nexus-ai.git
 cd nexus-ai
 cp .env.example .env
-# .env에 8개 Bot Token + API Key 입력
+# .env에 서버/채널 ID + 8개 Bot Token + OPENCLAW_GATEWAY_TOKEN 입력
 nano .env
 docker compose up -d
 ```

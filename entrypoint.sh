@@ -21,15 +21,17 @@ SOURCE="/config/openclaw.json"
 
 if [ ! -f "$TARGET" ]; then
     cp "$SOURCE" "$TARGET"
+    chown node:node "$TARGET"
     echo "✅ openclaw.json 초기 복사 완료"
     echo "🔧 doctor --fix 실행 중..."
-    openclaw doctor --fix || echo "⚠️ doctor --fix 실패 (계속 진행)"
+    gosu node openclaw doctor --fix || echo "⚠️ doctor --fix 실패 (계속 진행)"
 elif ! cmp -s "$SOURCE" "$TARGET" 2>/dev/null; then
     # config가 변경됐으면 업데이트
     cp "$SOURCE" "$TARGET"
+    chown node:node "$TARGET"
     echo "🔄 openclaw.json 업데이트 완료"
     echo "🔧 doctor --fix 실행 중..."
-    openclaw doctor --fix || echo "⚠️ doctor --fix 실패 (계속 진행)"
+    gosu node openclaw doctor --fix || echo "⚠️ doctor --fix 실패 (계속 진행)"
 else
     echo "ℹ️ openclaw.json 변경 없음 — 건너뜀"
 fi
@@ -38,6 +40,43 @@ fi
 echo "🔧 JSONC 주석 제거 중..."
 sed -i '/^\s*\/\//d' "$TARGET"
 echo "  ✅ 주석 제거 완료"
+
+# ─── Discord 서버/채널 ID 주입 ───
+echo "🆔 Discord 서버/채널 ID 확인 중..."
+ID_VARS="GUILD_ID PM_STRATEGY_CHANNEL_ID COLLAB_BRIDGE_CHANNEL_ID DEV_LOG_CHANNEL_ID DESIGN_REVIEW_CHANNEL_ID ALERT_CHANNEL_ID"
+MISSING_VARS=""
+for VAR in $ID_VARS; do
+    if [ -z "${!VAR}" ]; then
+        MISSING_VARS="$MISSING_VARS $VAR"
+    fi
+done
+
+if [ -z "$MISSING_VARS" ]; then
+    jq \
+        --arg guild "$GUILD_ID" \
+        --arg pm "$PM_STRATEGY_CHANNEL_ID" \
+        --arg collab "$COLLAB_BRIDGE_CHANNEL_ID" \
+        --arg devlog "$DEV_LOG_CHANNEL_ID" \
+        --arg design "$DESIGN_REVIEW_CHANNEL_ID" \
+        --arg alert "$ALERT_CHANNEL_ID" \
+        '.channels.discord.guilds = {
+            ($guild): {
+                requireMention: true,
+                channels: {
+                    ($pm): { allow: true, requireMention: false },
+                    ($collab): { allow: true },
+                    ($devlog): { allow: true },
+                    ($design): { allow: true },
+                    ($alert): { allow: true }
+                }
+            }
+        }' \
+        "$TARGET" > /tmp/openclaw_tmp.json && mv /tmp/openclaw_tmp.json "$TARGET"
+    echo "  ✅ Discord 서버/채널 ID 주입 완료"
+else
+    echo "  ⚠️ 일부 ID 환경변수 누락:$MISSING_VARS"
+    echo "     openclaw.json의 기본 ID를 사용합니다."
+fi
 
 # ─── Discord Bot Token 주입 ───
 # 환경변수 DISCORD_BOT_TOKEN_<AGENT_ID>를 accounts에 주입
@@ -68,6 +107,21 @@ if [ -n "$DISCORD_BOT_TOKEN_PM" ]; then
 fi
 
 echo "🔑 Discord 토큰 주입 완료"
+
+# ─── Gateway 인증 토큰 주입 ───
+if [ -z "$OPENCLAW_GATEWAY_TOKEN" ]; then
+    echo "❌ OPENCLAW_GATEWAY_TOKEN 환경변수가 비어 있습니다."
+    echo "   .env 파일에 OPENCLAW_GATEWAY_TOKEN을 설정한 뒤 다시 실행하세요."
+    exit 1
+fi
+
+jq --arg token "$OPENCLAW_GATEWAY_TOKEN" \
+    '.gateway.auth.token = $token' \
+    "$TARGET" > /tmp/openclaw_tmp.json && mv /tmp/openclaw_tmp.json "$TARGET"
+echo "🔐 Gateway 인증 토큰 주입 완료"
+
+# jq 작업을 root로 수행했으므로 최종 소유권을 node로 복구
+chown node:node "$TARGET" 2>/dev/null || true
 
 # ─── 에이전트 디렉토리 + 인증 자동 설정 ───
 echo "📁 에이전트 디렉토리 확인 중..."
