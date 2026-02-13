@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y \
     jq \
     && rm -rf /var/lib/apt/lists/*
 
-# Install OpenClaw globally
-RUN npm install -g openclaw@latest
+# Install OpenClaw (2026.2.9 고정 — 2026.2.12에 multi-agent session path 버그 있음)
+RUN npm install -g openclaw@2026.2.9
 
 # Create openclaw user home structure
 RUN mkdir -p /home/node/.openclaw/workspace \
