@@ -50,7 +50,7 @@
                 },
                 "identity": { "name": "Frontend" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "edit", "browser"]
+                    "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@Frontend", "@frontend", "Frontend"]
@@ -68,7 +68,7 @@
                 },
                 "identity": { "name": "Backend" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "edit"]
+                    "allow": ["exec", "process", "read", "write", "edit", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@Backend", "@backend", "Backend"]
@@ -85,7 +85,7 @@
                 },
                 "identity": { "name": "DevOps" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "edit"]
+                    "allow": ["exec", "process", "read", "write", "edit", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@DevOps", "@devops", "DevOps"]
@@ -102,7 +102,7 @@
                 },
                 "identity": { "name": "Security" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write"]
+                    "allow": ["exec", "process", "read", "write", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@Security", "@security", "Security"]
@@ -119,7 +119,7 @@
                 },
                 "identity": { "name": "Design" },
                 "tools": {
-                    "allow": ["browser", "read", "write"]
+                    "allow": ["browser", "read", "write", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@Design", "@design", "Design"]
@@ -136,7 +136,7 @@
                 },
                 "identity": { "name": "Research" },
                 "tools": {
-                    "allow": ["browser", "read", "write"]
+                    "allow": ["browser", "read", "write", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@Research", "@research", "Research"]
@@ -153,7 +153,7 @@
                 },
                 "identity": { "name": "QA" },
                 "tools": {
-                    "allow": ["exec", "process", "read", "write", "edit"]
+                    "allow": ["exec", "process", "read", "write", "edit", "message"]
                 },
                 "groupChat": {
                     "mentionPatterns": ["@QA", "@qa", "QA"]
