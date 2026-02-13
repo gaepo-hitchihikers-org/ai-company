@@ -196,9 +196,10 @@
                     // 채널 권한 설정 없이도 안전 (모든 봇이 모든 채널에 있어도 OK)
                     "requireMention": true,
                     "channels": {
-                        // #pm-strategy
+                        // #pm-strategy — PM 전용, 멘션 없이 응답
                         "1471753300507361302": {
-                            "allow": true
+                            "allow": true,
+                            "requireMention": false
                         },
                         // #collab-bridge
                         "1471753344367333376": {
