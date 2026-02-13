@@ -9,3 +9,7 @@ docker-data/
 
 # OS
 .DS_Store
+
+# md
+multi-agent.md
+IMPLEMENTATION_PLAN.md
