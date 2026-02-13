@@ -19,8 +19,37 @@ else
     echo "ℹ️ openclaw.json 변경 없음 — 건너뜀"
 fi
 
+# ─── Discord Bot Token 주입 ───
+# 환경변수 DISCORD_BOT_TOKEN_<AGENT_ID>를 accounts에 주입
+echo "🔑 Discord Bot Token 주입 중..."
+AGENTS="pm frontend backend devops security design research qa"
+for AGENT in $AGENTS; do
+    # 환경변수 이름: DISCORD_BOT_TOKEN_PM, DISCORD_BOT_TOKEN_FRONTEND, ...
+    ENV_VAR="DISCORD_BOT_TOKEN_$(echo $AGENT | tr 'a-z' 'A-Z')"
+    TOKEN_VALUE="${!ENV_VAR}"
+
+    if [ -n "$TOKEN_VALUE" ]; then
+        # jq로 accounts.<agent>.token 필드 주입
+        jq --arg agent "$AGENT" --arg token "$TOKEN_VALUE" \
+            '.channels.discord.accounts[$agent].token = $token' \
+            "$TARGET" > /tmp/openclaw_tmp.json && mv /tmp/openclaw_tmp.json "$TARGET"
+        echo "  ✅ $AGENT 봇 토큰 주입 완료"
+    else
+        echo "  ⚠️ $ENV_VAR 환경변수 없음 — 건너뜀"
+    fi
+done
+
+# 첫 번째 토큰을 기본 Discord 토큰으로도 설정 (OpenClaw 호환)
+if [ -n "$DISCORD_BOT_TOKEN_PM" ]; then
+    jq --arg token "$DISCORD_BOT_TOKEN_PM" \
+        '.channels.discord.token = $token' \
+        "$TARGET" > /tmp/openclaw_tmp.json && mv /tmp/openclaw_tmp.json "$TARGET"
+    echo "  ✅ 기본 Discord 토큰 설정 (PM)"
+fi
+
+echo "🔑 Discord 토큰 주입 완료"
+
 # ─── 에이전트 디렉토리 + 인증 자동 설정 ───
-# openclaw.json에서 에이전트 ID를 추출하여 agentDir 생성 + auth 복사
 echo "📁 에이전트 디렉토리 확인 중..."
 AGENT_IDS=$(grep -o '"id": *"[^"]*"' "$TARGET" | sed 's/"id": *"\([^"]*\)"/\1/')
 PM_AUTH="/home/node/.openclaw/agents/pm/agent/auth-profiles.json"
