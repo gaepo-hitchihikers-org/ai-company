@@ -7,8 +7,8 @@ services:
     volumes:
       # OpenClaw 설정 — entrypoint.sh가 /config → ~/.openclaw로 복사
       - ./openclaw.json:/config/openclaw.json:ro
-      # 에이전트별 워크스페이스 (openclaw.json의 ./workspaces/* → ~/workspaces/*)
-      - ./workspaces:/home/node/workspaces
+      # 에이전트별 워크스페이스 — .openclaw 내부에 마운트해야 세션 경로 검증 통과
+      - ./workspaces:/home/node/.openclaw/workspaces
       # 에이전트 간 공유 스토리지
       - ./shared:/home/node/.openclaw/shared
       # OpenClaw 데이터 영속화
