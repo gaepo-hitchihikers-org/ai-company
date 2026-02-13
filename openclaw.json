@@ -255,6 +255,19 @@
         "maxConcurrentRuns": 2
     },
 
+    // ─── 브라우저 기본 프로필 ───
+    // Docker 환경에서는 로컬 Chrome 대신 browserless(CDP) 프로필을 기본 사용
+    "browser": {
+        "enabled": true,
+        "defaultProfile": "browserless",
+        "profiles": {
+            "browserless": {
+                "cdpUrl": "http://browser:3000",
+                "color": "#00AA00"
+            }
+        }
+    },
+
     // ─── Gateway 설정 ───
     "gateway": {
         "mode": "local",
