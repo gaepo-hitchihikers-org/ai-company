@@ -241,7 +241,7 @@
 
     // ─── 세션 설정 ───
     "session": {
-        "dmScope": "per-channel-peer"
+        "dmScope": "main"
     },
 
     // ─── 크론 설정 ───
