@@ -3,17 +3,20 @@
     // 개포히치하이커스 — OpenClaw 설정
     // ===========================
     // 에이전트당 1개 Discord Bot = 8개 독립 봇이 Discord에서 실제 팀처럼 소통
+    // 모델: OpenAI Codex OAuth (구독 기반)
 
     "agents": {
         "defaults": {
             "model": {
-                "primary": "google-antigravity/claude-sonnet-4-5",
-                "fallbacks": ["google-antigravity/gemini-3-pro-high"]
+                "primary": "openai-codex/o3",
+                "fallbacks": ["openai-codex/gpt-5-mini"]
             },
-            "contextTokens": 50000,
+            "contextTokens": 200000,
             "models": {
-                "google-antigravity/claude-sonnet-4-5": { "alias": "Sonnet" },
-                "google-antigravity/gemini-3-pro-high": { "alias": "ProHigh" }
+                "openai-codex/o3": { "alias": "o3" },
+                "openai-codex/gpt-5-mini": { "alias": "gpt5mini" },
+                "openai-codex/gpt-5.1-codex": { "alias": "codex" },
+                "openai-codex/o4-mini": { "alias": "o4mini" }
             },
             "sandbox": {
                 "mode": "off"
@@ -28,8 +31,8 @@
                 "workspace": "~/.openclaw/workspaces/pm",
                 "agentDir": "~/.openclaw/agents/pm/agent",
                 "model": {
-                    "primary": "google-antigravity/claude-sonnet-4-5",
-                    "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
+                    "primary": "openai-codex/o3",
+                    "fallbacks": ["openai-codex/gpt-5-mini"]
                 },
                 "identity": { "name": "PM" },
                 "tools": {
@@ -46,7 +49,7 @@
                 "workspace": "~/.openclaw/workspaces/frontend",
                 "agentDir": "~/.openclaw/agents/frontend/agent",
                 "model": {
-                    "primary": "google-antigravity/gemini-3-pro-high"
+                    "primary": "openai-codex/gpt-5.1-codex"
                 },
                 "identity": { "name": "Frontend" },
                 "tools": {
@@ -63,8 +66,8 @@
                 "workspace": "~/.openclaw/workspaces/backend",
                 "agentDir": "~/.openclaw/agents/backend/agent",
                 "model": {
-                    "primary": "google-antigravity/claude-sonnet-4-5",
-                    "fallbacks": ["google-antigravity/claude-sonnet-4-5"]
+                    "primary": "openai-codex/o3",
+                    "fallbacks": ["openai-codex/gpt-5-mini"]
                 },
                 "identity": { "name": "Backend" },
                 "tools": {
@@ -81,7 +84,7 @@
                 "workspace": "~/.openclaw/workspaces/devops",
                 "agentDir": "~/.openclaw/agents/devops/agent",
                 "model": {
-                    "primary": "google-antigravity/claude-sonnet-4-5"
+                    "primary": "openai-codex/o4-mini"
                 },
                 "identity": { "name": "DevOps" },
                 "tools": {
@@ -98,7 +101,7 @@
                 "workspace": "~/.openclaw/workspaces/security",
                 "agentDir": "~/.openclaw/agents/security/agent",
                 "model": {
-                    "primary": "google-antigravity/claude-sonnet-4-5"
+                    "primary": "openai-codex/o3"
                 },
                 "identity": { "name": "Security" },
                 "tools": {
@@ -115,7 +118,7 @@
                 "workspace": "~/.openclaw/workspaces/design",
                 "agentDir": "~/.openclaw/agents/design/agent",
                 "model": {
-                    "primary": "google-antigravity/gemini-3-pro-high"
+                    "primary": "openai-codex/gpt-5.1-codex"
                 },
                 "identity": { "name": "Design" },
                 "tools": {
@@ -132,7 +135,7 @@
                 "workspace": "~/.openclaw/workspaces/research",
                 "agentDir": "~/.openclaw/agents/research/agent",
                 "model": {
-                    "primary": "google-antigravity/gemini-3-pro-high"
+                    "primary": "openai-codex/gpt-5-mini"
                 },
                 "identity": { "name": "Research" },
                 "tools": {
@@ -149,7 +152,7 @@
                 "workspace": "~/.openclaw/workspaces/qa",
                 "agentDir": "~/.openclaw/agents/qa/agent",
                 "model": {
-                    "primary": "google-antigravity/claude-sonnet-4-5"
+                    "primary": "openai-codex/o4-mini"
                 },
                 "identity": { "name": "QA" },
                 "tools": {
@@ -263,8 +266,7 @@
     "plugins": {
         "enabled": true,
         "entries": {
-            "discord": { "enabled": true },
-            "google-antigravity-auth": { "enabled": true }
+            "discord": { "enabled": true }
         }
     },
 

@@ -125,16 +125,16 @@ nexus-ai/
 
 ## 2. 에이전트 팀 구성 (8명 = 8개 봇)
 
-| Discord 봇      | 역할                            | 모델         | 주요 도구      |
-| --------------- | ------------------------------- | ------------ | -------------- |
-| **🎯 PM**       | 전략 수립, 업무 분배, 상태 관리 | Sonnet 4.5   | Shell, Browser |
-| **🖥️ Frontend** | UI 구현, 반응형, 클라이언트     | Gemini 3 Pro | Shell, Browser |
-| **⚙️ Backend**  | API, DB, 서버 사이드            | Sonnet 4.5   | Shell          |
-| **🚀 DevOps**   | 인프라, CI/CD, 배포             | Sonnet 4.5   | Shell          |
-| **🔒 Security** | 보안 리뷰, 취약점 점검          | Sonnet 4.5   | Shell          |
-| **🎨 Design**   | UI/UX 설계, 에셋 생성           | Gemini 3 Pro | Browser        |
-| **🔍 Research** | 시장 조사, 경쟁 분석            | Gemini 3 Pro | Browser        |
-| **✅ QA**       | 코드 리뷰, 테스트, 품질         | Sonnet 4.5   | Shell          |
+| Discord 봇      | 역할                            | 모델          | 주요 도구      |
+| --------------- | ------------------------------- | ------------- | -------------- |
+| **🎯 PM**       | 전략 수립, 업무 분배, 상태 관리 | o3            | Shell, Browser |
+| **🖥️ Frontend** | UI 구현, 반응형, 클라이언트     | gpt-5.1-codex | Shell, Browser |
+| **⚙️ Backend**  | API, DB, 서버 사이드            | o3            | Shell          |
+| **🚀 DevOps**   | 인프라, CI/CD, 배포             | o4-mini       | Shell          |
+| **🔒 Security** | 보안 리뷰, 취약점 점검          | o3            | Shell          |
+| **🎨 Design**   | UI/UX 설계, 에셋 생성           | gpt-5.1-codex | Browser        |
+| **🔍 Research** | 시장 조사, 경쟁 분석            | gpt-5-mini    | Browser        |
+| **✅ QA**       | 코드 리뷰, 테스트, 품질         | o4-mini       | Shell          |
 
 ---
 
@@ -236,13 +236,13 @@ openclaw pairing approve discord <CODE>
 
 ## 부록: 기술 스택
 
-| 구성요소        | 기술                                            | 비고                        |
-| --------------- | ----------------------------------------------- | --------------------------- |
-| 에이전트 런타임 | OpenClaw (MIT)                                  | v최신                       |
-| Gateway         | OpenClaw Gateway (단일 프로세스)                | 8개 에이전트 동시 관리      |
-| 통신 채널       | Discord Bot API × 8                             | 에이전트당 독립 봇          |
-| 봇 간 통신      | `allowBots: true` + Discord @mention            | 내부 도구 없이 순수 Discord |
-| 브라우저        | browserless/chrome (별도 컨테이너)              | 동시 세션 5개               |
-| 컨테이너화      | Docker + Docker Compose                         | Gateway 2GB + Browser 1GB   |
-| 파일 공유       | 공유 볼륨 `/home/node/.openclaw/shared/`        | —                           |
-| LLM 인증        | Antigravity OAuth (테스트) / API Key (프로덕션) | —                           |
+| 구성요소        | 기술                                     | 비고                        |
+| --------------- | ---------------------------------------- | --------------------------- |
+| 에이전트 런타임 | OpenClaw (MIT)                           | v최신                       |
+| Gateway         | OpenClaw Gateway (단일 프로세스)         | 8개 에이전트 동시 관리      |
+| 통신 채널       | Discord Bot API × 8                      | 에이전트당 독립 봇          |
+| 봇 간 통신      | `allowBots: true` + Discord @mention     | 내부 도구 없이 순수 Discord |
+| 브라우저        | browserless/chrome (별도 컨테이너)       | 동시 세션 5개               |
+| 컨테이너화      | Docker + Docker Compose                  | Gateway 2GB + Browser 1GB   |
+| 파일 공유       | 공유 볼륨 `/home/node/.openclaw/shared/` | —                           |
+| LLM 인증        | OpenAI Codex OAuth (구독 기반)           | —                           |

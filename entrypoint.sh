@@ -78,7 +78,7 @@ for AGENT_ID in $AGENT_IDS; do
         echo "  ✅ 에이전트 디렉토리 생성: $AGENT_ID"
     fi
 
-    # PM의 인증 정보를 다른 에이전트에 복사 (없는 경우에만)
+    # PM의 OpenAI Codex OAuth 인증 정보를 다른 에이전트에 복사 (없는 경우에만)
     AGENT_AUTH="$AGENT_DIR/auth-profiles.json"
     if [ "$AGENT_ID" != "pm" ] && [ -f "$PM_AUTH" ] && [ ! -f "$AGENT_AUTH" ]; then
         cp "$PM_AUTH" "$AGENT_AUTH"
