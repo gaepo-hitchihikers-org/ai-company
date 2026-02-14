@@ -29,14 +29,14 @@
 
 | # | Application 이름 | 봇 이름  | 생성 |
 | - | ---------------- | -------- | :--: |
-| 1 | Nexus-PM         | PM       | [ ]  |
-| 2 | Nexus-Frontend   | Frontend | [ ]  |
-| 3 | Nexus-Backend    | Backend  | [ ]  |
-| 4 | Nexus-DevOps     | DevOps   | [ ]  |
-| 5 | Nexus-Security   | Security | [ ]  |
-| 6 | Nexus-Design     | Design   | [ ]  |
-| 7 | Nexus-Research   | Research | [ ]  |
-| 8 | Nexus-QA         | QA       | [ ]  |
+| 1 | Nexus-PM         | PM_Thunder  | [ ]  |
+| 2 | Nexus-Frontend   | FE_Gaeulee  | [ ]  |
+| 3 | Nexus-Backend    | BE_Blue     | [ ]  |
+| 4 | Nexus-DevOps     | DO_Bob      | [ ]  |
+| 5 | Nexus-Security   | SE_Berman   | [ ]  |
+| 6 | Nexus-Design     | PD_Coco     | [ ]  |
+| 7 | Nexus-Research   | GM_Abby     | [ ]  |
+| 8 | Nexus-QA         | QA_Snow     | [ ]  |
 
 각 앱에서:
 
@@ -172,24 +172,24 @@ DISCORD_BOT_TOKEN_QA=...
 
 | 테스트   | 방법                                   | 기대 결과          |
 | -------- | -------------------------------------- | ------------------ |
-| PM 응답  | #pm-strategy에 "안녕" 입력             | PM 봇이 응답       |
-| Frontend | #collab-bridge에 "@Frontend 안녕" 입력 | Frontend 봇이 응답 |
-| Backend  | #collab-bridge에 "@Backend 안녕" 입력  | Backend 봇이 응답  |
-| Design   | #design-review에 "@Design 안녕" 입력   | Design 봇이 응답   |
-| Research | #collab-bridge에 "@Research 안녕" 입력 | Research 봇이 응답 |
-| QA       | #collab-bridge에 "@QA 안녕" 입력       | QA 봇이 응답       |
+| PM 응답  | #pm-strategy에 "안녕" 입력                | PM_Thunder 봇이 응답 |
+| Frontend | #collab-bridge에 "@FE_Gaeulee 안녕" 입력  | FE_Gaeulee 봇이 응답 |
+| Backend  | #collab-bridge에 "@BE_Blue 안녕" 입력     | BE_Blue 봇이 응답    |
+| Design   | #design-review에 "@PD_Coco 안녕" 입력     | PD_Coco 봇이 응답    |
+| Research | #collab-bridge에 "@GM_Abby 안녕" 입력     | GM_Abby 봇이 응답    |
+| QA       | #collab-bridge에 "@QA_Snow 안녕" 입력     | QA_Snow 봇이 응답    |
 
 ### 4-3. 봇 간 소통 테스트
 
-- [ ] #collab-bridge에서 PM 봇이 "@Frontend 테스트 작업" 메시지 → Frontend 봇이
+- [ ] #collab-bridge에서 PM_Thunder 봇이 "@FE_Gaeulee 테스트 작업" 메시지 → FE_Gaeulee 봇이
       수신하여 응답하는지 확인 (`allowBots: true` 동작 검증)
-- [ ] Frontend 봇이 "@Backend API 필요" → Backend 봇이 응답하는지 확인
+- [ ] FE_Gaeulee 봇이 "@BE_Blue API 필요" → BE_Blue 봇이 응답하는지 확인
 - [ ] 봇 A → 봇 B → 봇 A 연쇄 소통이 무한 루프 없이 정상 동작하는지 확인
 
 ### 4-4. 전체 시나리오 테스트
 
 - [ ] 사장이 #pm-strategy에 "랜딩 페이지 만들어줘" 지시
-  - PM → @Design → @Frontend → @QA → PM 보고
+  - PM_Thunder → @PD_Coco → @FE_Gaeulee → @QA_Snow → PM_Thunder 보고
   - 전체 흐름이 Discord 채널에서 가시적으로 진행되는지 확인
 
 ### 4-5. 크론 테스트

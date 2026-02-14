@@ -2,12 +2,11 @@
 .env
 
 # Agent runtime data (에이전트가 런타임에 생성하는 파일들)
-shared/nexus_storage/
-workspaces/*/HEARTBEAT.md
-workspaces/*/IDENTITY.md
-workspaces/*/SOUL.md
-workspaces/*/TOOLS.md
-workspaces/*/USER.md
+shared/nexus_storage/**
+!shared/nexus_storage/.gitkeep
+!shared/nexus_storage/design/.gitkeep
+!shared/nexus_storage/research/.gitkeep
+!shared/nexus_storage/content/.gitkeep
 
 # Docker
 docker-data/

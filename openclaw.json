@@ -36,7 +36,7 @@
                     "primary": "openai-codex/gpt-5.2",
                     "fallbacks": ["openai-codex/gpt-5.1-codex-mini"]
                 },
-                "identity": { "name": "PM" },
+                "identity": { "name": "PM_Thunder" },
                 "tools": {
                     "allow": ["exec", "read", "write", "edit", "browser", "message"]
                 },
@@ -53,7 +53,7 @@
                 "model": {
                     "primary": "openai-codex/gpt-5.3-codex"
                 },
-                "identity": { "name": "Frontend" },
+                "identity": { "name": "FE_Gaeulee" },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
@@ -71,7 +71,7 @@
                     "primary": "openai-codex/gpt-5.3-codex",
                     "fallbacks": ["openai-codex/gpt-5.1-codex-mini"]
                 },
-                "identity": { "name": "Backend" },
+                "identity": { "name": "BE_Blue" },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
@@ -88,7 +88,7 @@
                 "model": {
                     "primary": "openai-codex/gpt-5.3-codex"
                 },
-                "identity": { "name": "DevOps" },
+                "identity": { "name": "DO_Bob" },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },
@@ -105,7 +105,7 @@
                 "model": {
                     "primary": "openai-codex/gpt-5.3-codex"
                 },
-                "identity": { "name": "Security" },
+                "identity": { "name": "SE_Berman" },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "browser", "message"]
                 },
@@ -122,7 +122,7 @@
                 "model": {
                     "primary": "openai-codex/gpt-5.2"
                 },
-                "identity": { "name": "Design" },
+                "identity": { "name": "PD_Coco" },
                 "tools": {
                     "allow": ["exec", "browser", "read", "write", "message"]
                 },
@@ -139,7 +139,7 @@
                 "model": {
                     "primary": "openai-codex/gpt-5.2"
                 },
-                "identity": { "name": "Research" },
+                "identity": { "name": "GM_Abby" },
                 "tools": {
                     "allow": ["exec", "browser", "read", "write", "message"]
                 },
@@ -156,7 +156,7 @@
                 "model": {
                     "primary": "openai-codex/gpt-5.3-codex"
                 },
-                "identity": { "name": "QA" },
+                "identity": { "name": "QA_Snow" },
                 "tools": {
                     "allow": ["exec", "process", "read", "write", "edit", "browser", "message"]
                 },

@@ -55,14 +55,14 @@ Discord 봇으로** 소통하며, 직접 파일을 만들고, 보고서를 올�
 ┌──────────────────────────────────────────────────────────┐
 │  OpenClaw Gateway (단일 프로세스)                         │
 │                                                          │
-│  Agent: pm       ←→  Discord Bot: "PM"        (Token A)  │
-│  Agent: frontend ←→  Discord Bot: "Frontend"  (Token B)  │
-│  Agent: backend  ←→  Discord Bot: "Backend"   (Token C)  │
-│  Agent: devops   ←→  Discord Bot: "DevOps"    (Token D)  │
-│  Agent: security ←→  Discord Bot: "Security"  (Token E)  │
-│  Agent: design   ←→  Discord Bot: "Design"    (Token F)  │
-│  Agent: research ←→  Discord Bot: "Research"  (Token G)  │
-│  Agent: qa       ←→  Discord Bot: "QA"        (Token H)  │
+│  Agent: pm       ←→  Discord Bot: "PM_Thunder" (Token A) │
+│  Agent: frontend ←→  Discord Bot: "FE_Gaeulee" (Token B) │
+│  Agent: backend  ←→  Discord Bot: "BE_Blue"    (Token C) │
+│  Agent: devops   ←→  Discord Bot: "DO_Bob"     (Token D) │
+│  Agent: security ←→  Discord Bot: "SE_Berman"  (Token E) │
+│  Agent: design   ←→  Discord Bot: "PD_Coco"    (Token F) │
+│  Agent: research ←→  Discord Bot: "GM_Abby"    (Token G) │
+│  Agent: qa       ←→  Discord Bot: "QA_Snow"    (Token H) │
 │                                                          │
 │  allowBots: true → 봇끼리 @mention으로 소통 가능          │
 ├──────────────────────────────────────────────────────────┤
@@ -127,14 +127,14 @@ nexus-ai/
 
 | Discord 봇      | 역할                            | 모델          | 주요 도구      |
 | --------------- | ------------------------------- | ------------- | -------------- |
-| **🎯 PM**       | 전략 수립, 업무 분배, 상태 관리 | o3            | Shell, Browser |
-| **🖥️ Frontend** | UI 구현, 반응형, 클라이언트     | gpt-5.1-codex | Shell, Browser |
-| **⚙️ Backend**  | API, DB, 서버 사이드            | o3            | Shell          |
-| **🚀 DevOps**   | 인프라, CI/CD, 배포             | o4-mini       | Shell          |
-| **🔒 Security** | 보안 리뷰, 취약점 점검          | o3            | Shell          |
-| **🎨 Design**   | UI/UX 설계, 에셋 생성           | gpt-5.1-codex | Browser        |
-| **🔍 Research** | 시장 조사, 경쟁 분석            | gpt-5-mini    | Browser        |
-| **✅ QA**       | 코드 리뷰, 테스트, 품질         | o4-mini       | Shell          |
+| **🎯 PM_Thunder**  | 전략 수립, 업무 분배, 상태 관리 | o3            | Shell, Browser |
+| **🖥️ FE_Gaeulee**  | UI 구현, 반응형, 클라이언트     | gpt-5.1-codex | Shell, Browser |
+| **⚙️ BE_Blue**     | API, DB, 서버 사이드            | o3            | Shell          |
+| **🚀 DO_Bob**      | 인프라, CI/CD, 배포             | o4-mini       | Shell          |
+| **🔒 SE_Berman**   | 보안 리뷰, 취약점 점검          | o3            | Shell          |
+| **🎨 PD_Coco**     | UI/UX 설계, 에셋 생성           | gpt-5.1-codex | Browser        |
+| **🔍 GM_Abby**     | 시장 조사, 경쟁 분석            | gpt-5-mini    | Browser        |
+| **✅ QA_Snow**     | 코드 리뷰, 테스트, 품질         | o4-mini       | Shell          |
 
 ---
 
@@ -142,10 +142,10 @@ nexus-ai/
 
 | 채널             | 용도                       | 참여 봇                           | requireMention |
 | ---------------- | -------------------------- | --------------------------------- | -------------- |
-| `#pm-strategy`   | 사장 ↔ PM 전략 소통        | PM만                              | ❌             |
+| `#pm-strategy`   | 사장 ↔ PM 전략 소통        | PM_Thunder만                      | ❌             |
 | `#collab-bridge` | 에이전트 간 협업, @mention | 전원(8개)                         | ✅             |
-| `#dev-log`       | 개발 로그, 기술 논의       | PM, Frontend, Backend, DevOps, QA | ✅             |
-| `#design-review` | 디자인 시안 리뷰           | PM, Design, Frontend              | ✅             |
+| `#dev-log`       | 개발 로그, 기술 논의       | PM_Thunder, FE_Gaeulee, BE_Blue, DO_Bob, QA_Snow | ✅             |
+| `#design-review` | 디자인 시안 리뷰           | PM_Thunder, PD_Coco, FE_Gaeulee   | ✅             |
 | `#alert`         | 긴급 장애/에러 알림        | 전원                              | ❌             |
 
 - **requireMention ✅**: 해당 봇이 @mention될 때만 응답
@@ -195,14 +195,14 @@ nexus-ai/
 
 | Application 이름 | 봇 이름  | 용도        |
 | ---------------- | -------- | ----------- |
-| Nexus-PM         | PM       | 매니저      |
-| Nexus-Frontend   | Frontend | 프론트엔드  |
-| Nexus-Backend    | Backend  | 백엔드      |
-| Nexus-DevOps     | DevOps   | 인프라/배포 |
-| Nexus-Security   | Security | 보안        |
-| Nexus-Design     | Design   | 디자인      |
-| Nexus-Research   | Research | 리서치      |
-| Nexus-QA         | QA       | 품질 관리   |
+| Nexus-PM         | PM_Thunder  | 매니저      |
+| Nexus-Frontend   | FE_Gaeulee  | 프론트엔드  |
+| Nexus-Backend    | BE_Blue     | 백엔드      |
+| Nexus-DevOps     | DO_Bob      | 인프라/배포 |
+| Nexus-Security   | SE_Berman   | 보안        |
+| Nexus-Design     | PD_Coco     | 디자인      |
+| Nexus-Research   | GM_Abby     | 리서치      |
+| Nexus-QA         | QA_Snow     | 품질 관리   |
 
 각 앱에서:
 
