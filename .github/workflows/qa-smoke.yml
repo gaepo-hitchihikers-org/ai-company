@@ -1,0 +1,42 @@
+name: qa-smoke
+
+on:
+  pull_request:
+    branches: ["staging", "main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate openclaw.json parses
+        run: |
+          python - <<'PY'
+          import json, re
+          with open('openclaw.json', 'r', encoding='utf-8') as f:
+              text = f.read()
+          # JSONC: // 주석 제거 (문자열 내부의 //는 보존)
+          text = re.sub(r'(?<!["\w])//.*', '', text)
+          json.loads(text)
+          print('openclaw.json OK')
+          PY
+
+      - name: Basic repo structure checks
+        run: |
+          test -f docker-compose.yml
+          test -f Dockerfile
+          test -f entrypoint.sh
+          test -f setup.sh
+          test -d workspaces
+          echo "structure OK"
+
+      - name: Shell syntax check
+        run: |
+          bash -n entrypoint.sh
+          bash -n setup.sh
+          echo "shell OK"
